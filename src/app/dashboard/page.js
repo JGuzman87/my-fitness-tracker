@@ -1,8 +1,11 @@
+import StatForm from '@/components/StatForm';
 import React from 'react'
 
 const Dashboard = () => {
   return (
-    <div>Dashboard</div>
+   <>
+   <StatForm  />
+   </>
   )
 }
 
