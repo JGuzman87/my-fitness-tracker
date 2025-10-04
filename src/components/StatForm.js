@@ -25,8 +25,8 @@ const StatForm = () => {
       <h1 className="text-2xl">Body Stats</h1>
       <label>Date:</label>
       <input
-        className="bg-white max-w-1/2 p-1"
-        type="text"
+        className="bg-white max-w-full p-1"
+        type="date"
         name="date"
         value={stats.date}
         onChange={handleChange}
@@ -34,7 +34,7 @@ const StatForm = () => {
       />
       <label>Weight:</label>
       <input
-        className="bg-white max-w-1/2 p-1"
+        className="bg-white max-w-full p-1"
         type="text"
         name="weight"
         value={stats.weight}
@@ -43,7 +43,7 @@ const StatForm = () => {
       />
       <label>Waist:</label>
       <input
-        className="bg-white max-w-1/2 p-1"
+        className="bg-white max-w-full p-1"
         type="text"
         name="waist"
         value={stats.waist}
