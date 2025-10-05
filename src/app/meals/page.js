@@ -1,8 +1,10 @@
 "use client"
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
+
 
 const MealsPage = () => {
-
+  
+  
   const [storedMeal, setStoredMeal] = useState(null);
 
   useEffect(() => {
@@ -15,13 +17,17 @@ const MealsPage = () => {
       }
     }
 
+
   }, []);
+
+
 
   return (
     <>
     { storedMeal && (<div className="card card-border bg-base-100 w-96">
       <div className="card-body">
-        <h2 className="card-title">Today's Meal</h2>
+        <h2 className="card-title">{storedMeal.date} </h2>
+
         <p>
         Meal Name: {storedMeal.meal_name}
         </p>
