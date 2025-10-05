@@ -14,7 +14,10 @@ const StatForm = () => {
     e.preventDefault();
 
     console.log(stats);
+     localStorage.setItem("stats", JSON.stringify(stats));
+     console.log(stats);
     setStats({ date: "", weight: "", waist: "" });
+
   };
 
   return (

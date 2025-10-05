@@ -12,6 +12,8 @@ const MealsForm = () => {
     protein: "",
   });
 
+
+
   const handleChange = (e) => {
     const {name, value} = e.target;
 
@@ -19,8 +21,21 @@ const MealsForm = () => {
   }
 const handleClick = (e) => {
   e.preventDefault();
+  const storedMeal = localStorage.getItem('meals');
+  
+  localStorage.setItem('meals', JSON.stringify(mealData));
   console.log(mealData);
+
+  setMealData({
+    date: "",
+    meal_name: "",
+    calories: "",
+    protein: "",
+  });
+
 }
+
+
   return (
     <form
       className="bg-red-400 flex flex-col gap-2 p-4 max-w-1/2  "
@@ -47,7 +62,7 @@ const handleClick = (e) => {
       <label htmlFor="calories">Calories:</label>
       <input
         className="bg-white max-w-full p-1"
-        type="text"
+        type="number"
         name="calories"
         value={mealData.calories}
               onChange={handleChange}
