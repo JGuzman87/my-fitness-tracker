@@ -1,9 +1,12 @@
 "use client"
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 
 const MealsForm = () => {
+
+  const router =  useRouter();
 
   const [mealData, setMealData] = useState({
     date: "",
@@ -21,7 +24,6 @@ const MealsForm = () => {
   }
 const handleClick = (e) => {
   e.preventDefault();
-  const storedMeal = localStorage.getItem('meals');
   
   localStorage.setItem('meals', JSON.stringify(mealData));
   console.log(mealData);
@@ -32,6 +34,8 @@ const handleClick = (e) => {
     calories: "",
     protein: "",
   });
+
+  router.push('/meals');
 
 }
 
