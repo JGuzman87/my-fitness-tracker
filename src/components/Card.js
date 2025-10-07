@@ -6,11 +6,11 @@ const Card = () => {
   const [storedMeal, setStoredMeal] = useState(null);
 
   useEffect(() => {
-    const saved = localStorage.getItem("meals");
-    if (saved) {
+    const savedMeal = localStorage.getItem("meals");
+    if (savedMeal) {
       try {
-        setStoredMeal(JSON.parse(saved));
-      } catch {
+        setStoredMeal(JSON.parse(savedMeal));
+      } catch  {
         console.error("Error parsing stored meal");
       }
     }

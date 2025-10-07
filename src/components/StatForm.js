@@ -1,10 +1,10 @@
 "use client";
-
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const StatForm = () => {
   const [stats, setStats] = useState({ date: "", weight: "", waist: "" });
-
+  const router = useRouter();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setStats((prev) => ({ ...prev, [name]: value }));
@@ -14,10 +14,10 @@ const StatForm = () => {
     e.preventDefault();
 
     console.log(stats);
-     localStorage.setItem("stats", JSON.stringify(stats));
-     console.log(stats);
-    setStats({ date: "", weight: "", waist: "" });
+    localStorage.setItem("stats", JSON.stringify(stats));
 
+    router.push("/body_stats");
+    setStats({ date: "", weight: "", waist: "" });
   };
 
   return (
