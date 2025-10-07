@@ -42,7 +42,7 @@ const handleClick = (e) => {
 
   return (
     <form
-      className="bg-red-400 flex flex-col gap-2 p-4 max-w-1/2  "
+      className="bg-red-400 flex flex-col gap-2 p-4 col-span-1"
      onSubmit={handleClick}
     >
       <h1 className="text-2xl">Meal</h1>
