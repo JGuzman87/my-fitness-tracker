@@ -3,12 +3,19 @@
 import { useState, useEffect } from 'react'
 
 const BodyStats = () => {
-  const [storedStats, setStoredStats ] = useState();
+  const [storedStats, setStoredStats ] = useState([]);
+
   useEffect(() => {
    const savedStats = localStorage.getItem("stats");
     if (savedStats) {
          try {
-          setStoredStats(JSON.parse(savedStats))
+          const parsed = JSON.parse(savedStats);
+          if (Array.isArray(parsed)) {
+            setStoredStats(parsed)
+          } else {
+            setStoredStats([parsed]);
+          }
+       
          } catch {
           console.error("Error parsing stored stats");
          }
@@ -18,16 +25,16 @@ const BodyStats = () => {
 
   return (
     <>
-      {storedStats && (
-        <div className="card bg-primary text-primary-content w-96">
+      {storedStats && storedStats.length > 0 && 
+        storedStats.map((stats) => (<div key={stats.date} className="card bg-primary text-primary-content w-96">
           <div className="card-body">
-            <h2 className="card-title">{storedStats.date}</h2>
+            <h2 className="card-title">{stats.date}</h2>
             <ul>
               <li>
-                <p>{storedStats.weight} LBS</p>
+                <p>{stats.weight} LBS</p>
               </li>
               <li>
-                <p>{storedStats.waist} Inches</p>
+                <p>{stats.waist} Inches</p>
               </li>
             </ul>
             <div className="card-actions justify-end">
@@ -35,7 +42,7 @@ const BodyStats = () => {
             </div>
           </div>
         </div>
-      )}
+      ))}
     </>
   );
 }

@@ -6,10 +6,10 @@ const Nav = () => {
     <nav className="bg-blue-100 flex p-2 gap-4">
       <ul className="flex gap-4 p-4 capitalize">
         <li>
-          <Link href={"/"}>Home</Link>
+          <Link href={"/"}>home</Link>
         </li>
         {links.map((link) => (
-          <li>
+          <li key={link}>
             <Link href={`/${link}`}>{link}</Link>
           </li>
         ))}

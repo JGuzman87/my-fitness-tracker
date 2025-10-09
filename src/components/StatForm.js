@@ -3,8 +3,11 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const StatForm = () => {
-  const [stats, setStats] = useState({ date: "", weight: "", waist: "" });
+
   const router = useRouter();
+
+  const [stats, setStats] = useState({ date: "", weight: "", waist: "" });
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setStats((prev) => ({ ...prev, [name]: value }));
@@ -14,9 +17,15 @@ const StatForm = () => {
     e.preventDefault();
 
     console.log(stats);
-    localStorage.setItem("stats", JSON.stringify(stats));
+    const storedStats = JSON.parse(localStorage.getItem('stats')) || [];
+    const updatedStats = [...storedStats, stats];
 
-    router.push("/body_stats");
+      localStorage.setItem('stats', JSON.stringify(updatedStats))
+    ;
+
+    
+    
+    router.push("/stats");
     setStats({ date: "", weight: "", waist: "" });
   };
 
@@ -26,7 +35,7 @@ const StatForm = () => {
       onSubmit={handleClick}
     >
       <h1 className="text-2xl">Body Stats</h1>
-      <label>Date:</label>
+      <label htmlFor="date">Date:</label>
       <input
         className="bg-white max-w-full p-1"
         type="date"
@@ -35,7 +44,7 @@ const StatForm = () => {
         onChange={handleChange}
         required
       />
-      <label>Weight:</label>
+      <label htmlFor="weight">Weight:</label>
       <input
         className="bg-white max-w-full p-1"
         type="text"
@@ -44,7 +53,7 @@ const StatForm = () => {
         onChange={handleChange}
         required
       />
-      <label>Waist:</label>
+      <label htmlFor="waist">Waist:</label>
       <input
         className="bg-white max-w-full p-1"
         type="text"

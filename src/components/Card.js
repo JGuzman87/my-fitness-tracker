@@ -3,14 +3,19 @@
 import { useEffect, useState } from "react";
 
 const Card = () => {
-  const [storedMeal, setStoredMeal] = useState(null);
+  const [storedMeals, setStoredMeals] = useState([]);
 
   useEffect(() => {
     const savedMeal = localStorage.getItem("meals");
     if (savedMeal) {
       try {
-        setStoredMeal(JSON.parse(savedMeal));
-      } catch  {
+        const parsed = JSON.parse(savedMeal);
+        if (Array.isArray(parsed)) {
+          setStoredMeals(parsed);
+        } else {
+          setStoredMeals([parsed]);
+        }
+      } catch {
         console.error("Error parsing stored meal");
       }
     }
@@ -18,20 +23,20 @@ const Card = () => {
 
   return (
     <>
-      {storedMeal && (
-        <div className="card card-border bg-base-100 w-96">
-          <div className="card-body">
-            <h2 className="card-title">{storedMeal.date} </h2>
+      {storedMeals &&  storedMeals.length > 0 && storedMeals.map((meal) => (
+        <div key={meal.name} className="card card-border bg-base-100 w-96">
+          <div  className="card-body">
+            <h2 className="card-title">{meal.date} </h2>
 
-            <p>Meal Name: {storedMeal.meal_name}</p>
-            <p> Calories: {`${storedMeal.calories}`}</p>
-            <p> Protein: {`${storedMeal.protein} grams`}</p>
+            <p>Meal Name: {meal.meal_name}</p>
+            <p> Calories: {`${meal.calories}`}</p>
+            <p> Protein: {`${meal.protein} grams`}</p>
             <div className="card-actions justify-end">
               <button className="btn btn-primary">Buy Now</button>
             </div>
           </div>
         </div>
-      )}
+      ))}
     </>
   );
 };

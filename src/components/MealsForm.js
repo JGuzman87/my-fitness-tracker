@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 
 const MealsForm = () => {
 
-  const router =  useRouter();
+  const router = useRouter();
 
   const [mealData, setMealData] = useState({
     date: "",
@@ -24,8 +24,10 @@ const MealsForm = () => {
   }
 const handleClick = (e) => {
   e.preventDefault();
-  
-  localStorage.setItem('meals', JSON.stringify(mealData));
+  //retreive stored meal, or append an array (aka add an empty array(box) in local storage)
+  const storedMeals = JSON.parse(localStorage.getItem('meals')) || [];
+const updatedMeals = [...storedMeals, mealData];
+  localStorage.setItem('meals', JSON.stringify(updatedMeals));
   console.log(mealData);
 
   setMealData({
