@@ -22,17 +22,19 @@ const StatsCard = () => {
       }
     }, []);
 
+    const today = new Date();
+    const formattedDate = today.toLocaleDateString("en-US");
     return (
       <>
         {storedStats &&
           storedStats.length > 0 &&
-          storedStats.map((stats) => (
+          storedStats.map((stats, i) => (
             <div
-              key={stats.date}
-              className="card bg-primary text-primary-content w-96"
+              key={i}
+              className="card bg-primary text-primary-content"
             >
               <div className="card-body">
-                <h2 className="card-title">{stats.date}</h2>
+                <h2 className="card-title">{formattedDate}</h2>
                 <ul>
                   <li>
                     <p>{stats.weight} LBS</p>
@@ -42,7 +44,7 @@ const StatsCard = () => {
                   </li>
                 </ul>
                 <div className="card-actions justify-end">
-                  <button className="btn">Buy Now</button>
+                  <button className="btn btn-error">Buy Now</button>
                 </div>
               </div>
             </div>

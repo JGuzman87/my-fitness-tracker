@@ -21,18 +21,21 @@ const MealCard = () => {
     }
   }, []);
 
+  const today = new Date();
+  const formattedDate = today.toLocaleDateString("en-US");
   return (
     <>
       {storedMeals &&  storedMeals.length > 0 && storedMeals.map((meal) => (
-        <div key={meal.name} className="card card-border bg-base-100 w-96">
+        <div key={meal.name} className="card card-border bg-primary text-white">
           <div  className="card-body">
-            <h2 className="card-title">{meal.date} </h2>
+         
+            <h2 className="card-title">{formattedDate} </h2>
 
             <p>Meal Name: {meal.meal_name}</p>
             <p> Calories: {`${meal.calories}`}</p>
             <p> Protein: {`${meal.protein} grams`}</p>
             <div className="card-actions justify-end">
-              <button className="btn btn-primary">Buy Now</button>
+              <button className="btn btn-error">Buy Now</button>
             </div>
           </div>
         </div>

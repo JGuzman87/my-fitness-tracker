@@ -6,7 +6,7 @@ const StatForm = () => {
 
   const router = useRouter();
 
-  const [stats, setStats] = useState({ date: "", weight: "", waist: "" });
+  const [stats, setStats] = useState({weight: "", waist: "" });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,24 +26,15 @@ const StatForm = () => {
     
     
     router.push("/stats");
-    setStats({ date: "", weight: "", waist: "" });
+    setStats({ weight: "", waist: "" });
   };
 
   return (
     <form
-      className="bg-blue-400 flex flex-col gap-2 p-6 max-w-1/2 col-span-2 "
+      className="bg-blue-400 flex flex-col gap-6 p-2 max-w-1/2  col-span-2 "
       onSubmit={handleClick}
     >
-      <h1 className="text-2xl">Body Stats</h1>
-      <label htmlFor="date">Date:</label>
-      <input
-        className="bg-white max-w-full p-1"
-        type="date"
-        name="date"
-        value={stats.date}
-        onChange={handleChange}
-        required
-      />
+      <h1 className="text-2xl">Stats</h1>
       <label htmlFor="weight">Weight:</label>
       <input
         className="bg-white max-w-full p-1"

@@ -9,7 +9,6 @@ const MealsForm = () => {
   const router = useRouter();
 
   const [mealData, setMealData] = useState({
-    date: "",
     meal_name: "",
     calories: "",
     protein: "",
@@ -31,7 +30,6 @@ const updatedMeals = [...storedMeals, mealData];
   console.log(mealData);
 
   setMealData({
-    date: "",
     meal_name: "",
     calories: "",
     protein: "",
@@ -48,15 +46,7 @@ const updatedMeals = [...storedMeals, mealData];
      onSubmit={handleClick}
     >
       <h1 className="text-2xl">Meal</h1>
-      <label htmlFor="date">Date: </label>
-      <input
-        className="bg-white max-w-full p-1"
-        type="date"
-        name="date"
-        value={mealData.date}
-        onChange={handleChange}
-        required
-      />
+ 
       <label htmlFor="meal_name">Meal Name:</label>
       <input
         className="bg-white max-w-full p-1"
