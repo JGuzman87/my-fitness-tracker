@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-const Card = () => {
+const MealCard = () => {
   const [storedMeals, setStoredMeals] = useState([]);
 
   useEffect(() => {
@@ -41,4 +41,4 @@ const Card = () => {
   );
 };
 
-export default Card;
+export default MealCard;

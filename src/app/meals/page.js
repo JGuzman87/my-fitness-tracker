@@ -1,9 +1,9 @@
-import Card from "@/components/Card";
+import MealCard from "@/components/MealCard";
 
 const MealsPage = () => {
   return (
     <>
-      <Card />
+      <MealCard />
     </>
   );
 };
