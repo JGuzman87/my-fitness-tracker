@@ -31,7 +31,7 @@ const StatForm = () => {
 
   return (
     <form
-      className="bg-blue-400 flex flex-col gap-6 p-2 max-w-1/2  col-span-2 "
+      className="bg-blue-400 flex flex-col gap-6 p-2 col-span-1"
       onSubmit={handleClick}
     >
       <h1 className="text-2xl">Stats</h1>

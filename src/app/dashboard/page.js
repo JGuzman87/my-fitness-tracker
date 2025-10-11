@@ -4,7 +4,7 @@ import React from 'react'
 
 const Dashboard = () => {
   return (
-    <div className="grid grid-cols-3 p-2 ">
+    <div className="grid md:grid-cols-3 gap-4 p-2 ">
       <StatForm  />
       <MealsForm />
     </div>
