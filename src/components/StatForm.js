@@ -3,10 +3,9 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const StatForm = () => {
-
   const router = useRouter();
 
-  const [stats, setStats] = useState({weight: "", waist: "" });
+  const [stats, setStats] = useState({ weight: "", waist: "" });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -17,14 +16,11 @@ const StatForm = () => {
     e.preventDefault();
 
     console.log(stats);
-    const storedStats = JSON.parse(localStorage.getItem('stats')) || [];
+    const storedStats = JSON.parse(localStorage.getItem("stats")) || [];
     const updatedStats = [...storedStats, stats];
 
-      localStorage.setItem('stats', JSON.stringify(updatedStats))
-    ;
+    localStorage.setItem("stats", JSON.stringify(updatedStats));
 
-    
-    
     router.push("/stats");
     setStats({ weight: "", waist: "" });
   };

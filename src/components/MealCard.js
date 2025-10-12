@@ -20,6 +20,21 @@ const MealCard = () => {
       }
     }
   }, []);
+//function to delete cards
+  const deleteCard = (deleteIndex) => {
+    const storedMealCard = JSON.parse(localStorage.getItem("meals")) || [];
+
+    const updatedMealCards = storedMealCard.filter(
+      (_, index) => index !== deleteIndex
+    );
+
+    localStorage.setItem("meals", JSON.stringify(updatedMealCards));
+    setStoredMeals(updatedMealCards);
+  };
+//function to handle the delete
+  const handleDelete = (index) => {
+    deleteCard(index);
+  };
 
   const today = new Date();
   const formattedDate = today.toLocaleDateString("en-US");
@@ -34,7 +49,12 @@ const MealCard = () => {
               <p> Calories: {`${meal.calories}`}</p>
               <p> Protein: {`${meal.protein} grams`}</p>
               <div className="card-actions justify-end">
-                <button className="btn btn-error">Buy Now</button>
+                <button
+                  className="btn btn-error"
+                  onClick={() => handleDelete(i)}
+                >
+                  Delete
+                </button>
               </div>
               <div className="font-thin">{formattedDate}</div>
             </div>
