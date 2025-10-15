@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react";
+import { useState, useEffect, use }from "react";
 import { useRouter } from "next/navigation";
 
 
@@ -15,25 +15,27 @@ const MealsForm = () => {
   });
 
 
-
   const handleChange = (e) => {
     const {name, value} = e.target;
 
     setMealData(prev => ({...prev, [name]:value}));
   }
-const handleClick = (e) => {
+const handleClick =  (e) => {
   e.preventDefault();
   //retreive stored meal, or append an array (aka add an empty array(box) in local storage)
   const storedMeals = JSON.parse(localStorage.getItem('meals')) || [];
 const updatedMeals = [...storedMeals, mealData];
   localStorage.setItem('meals', JSON.stringify(updatedMeals));
   console.log(mealData);
+  //api fetch call for image
 
   setMealData({
     meal_name: "",
     calories: "",
     protein: "",
   });
+
+
 
   router.push('/meals');
 
@@ -43,7 +45,7 @@ const updatedMeals = [...storedMeals, mealData];
   return (
     <form
       className="bg-red-400 flex flex-col gap-2 p-4 col-span-1"
-     onSubmit={handleClick}
+      onSubmit={handleClick}
     >
       <h1 className="text-2xl">Meal</h1>
  
@@ -51,8 +53,8 @@ const updatedMeals = [...storedMeals, mealData];
       <input
         className="bg-white max-w-full p-1"
         type="text"
-        name="meal_name" 
-        value={mealData.meal_name} 
+        name="meal_name"
+        value={mealData.meal_name}
         onChange={handleChange}
       />
       <label htmlFor="calories">Calories:</label>
@@ -61,7 +63,7 @@ const updatedMeals = [...storedMeals, mealData];
         type="number"
         name="calories"
         value={mealData.calories}
-              onChange={handleChange}
+        onChange={handleChange}
       />
       <label htmlFor="protein">Protein:</label>
       <input

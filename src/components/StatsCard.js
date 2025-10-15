@@ -10,11 +10,8 @@ const StatsCard = () => {
     if (savedStats) {
       try {
         const parsed = JSON.parse(savedStats);
-         if (Array.isArray(parsed)) {
+       
            setStoredStats(parsed);
-         } else {
-           setStoredStats([parsed]);
-         }
       
       } catch {
         console.error("Error parsing stored stats");

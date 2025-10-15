@@ -7,6 +7,7 @@ const Dashboard = () => {
     <div className="grid md:grid-cols-3 gap-4 p-2 ">
       <StatForm  />
       <MealsForm />
+    
     </div>
   );
 }

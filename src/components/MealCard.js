@@ -10,11 +10,9 @@ const MealCard = () => {
     if (savedMeal) {
       try {
         const parsed = JSON.parse(savedMeal);
-        if (Array.isArray(parsed)) {
+ 
           setStoredMeals(parsed);
-        } else {
-          setStoredMeals([parsed]);
-        }
+     
       } catch {
         console.error("Error parsing stored meal");
       }
