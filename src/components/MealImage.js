@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 
-const Dashboard = () => {
+const MealImage = () => {
    const [image, setImage] = useState('');
     useEffect(() => {
         const fetchImage = async () => {
@@ -22,4 +22,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard;
+export default MealImage;
