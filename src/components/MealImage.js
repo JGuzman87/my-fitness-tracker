@@ -1,10 +1,10 @@
 "use client"
-import Image from 'next/image';
+
 import { useEffect, useState } from 'react'
 
 const MealImage = ({mealName}) => {
    const [image, setImage] = useState(mealName);
-console.log(mealName);
+
     useEffect(() => {
            const fetchImage = async () => {
              const request = await fetch(
