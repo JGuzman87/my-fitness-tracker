@@ -20,10 +20,10 @@ const MealCard = () => {
     }
   }, []);
 //function to delete cards
-  const deleteCard = (deleteIndex) => {
+  const deleteCard = (deleteMeal) => {
 
     const updatedMealCards = storedMeals.filter(
-      (_, index) => index !== deleteIndex
+      (mealName) => mealName.meal_name !== deleteMeal
     );
 
     localStorage.setItem("meals", JSON.stringify(updatedMealCards));
@@ -40,8 +40,8 @@ const MealCard = () => {
     <>
       {storedMeals &&
         storedMeals.length > 0 &&
-        storedMeals.map((meal, i) => (
-          <div key={i} className="card card-border bg-primary text-white">
+        storedMeals.map((meal) => (
+          <div key={meal && meal.meal_name} className="card card-border bg-primary text-white">
             <div className="card-body">
               <h2 className="card-title">{meal.meal_name} </h2>
               <MealImage mealName={meal.meal_name}/>
@@ -50,7 +50,7 @@ const MealCard = () => {
               <div className="card-actions justify-end">
                 <button
                   className="btn btn-error"
-                  onClick={() => handleDelete(i)}
+                  onClick={() => handleDelete(meal.meal_name)}
                 >
                   Delete
                 </button>

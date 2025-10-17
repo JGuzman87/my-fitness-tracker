@@ -20,7 +20,7 @@ const MealsForm = () => {
 
     setMealData(prev => ({...prev, [name]:value}));
   }
-const handleClick =  (e) => {
+const handleSubmit =  (e) => {
   e.preventDefault();
   //retreive stored meal, or append an array (aka add an empty array(box) in local storage)
   const storedMeals = JSON.parse(localStorage.getItem('meals')) || [];
@@ -45,7 +45,7 @@ const updatedMeals = [...storedMeals, mealData];
   return (
     <form
       className="bg-red-400 flex flex-col gap-2 p-4 col-span-1"
-      onSubmit={handleClick}
+      onSubmit={handleSubmit}
     >
       <h1 className="text-2xl">Meal</h1>
  
