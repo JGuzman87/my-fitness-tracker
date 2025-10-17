@@ -21,9 +21,8 @@ const MealCard = () => {
   }, []);
 //function to delete cards
   const deleteCard = (deleteIndex) => {
-    const storedMealCard = JSON.parse(localStorage.getItem("meals")) || [];
 
-    const updatedMealCards = storedMealCard.filter(
+    const updatedMealCards = storedMeals.filter(
       (_, index) => index !== deleteIndex
     );
 
@@ -45,7 +44,7 @@ const MealCard = () => {
           <div key={i} className="card card-border bg-primary text-white">
             <div className="card-body">
               <h2 className="card-title">{meal.meal_name} </h2>
-              <MealImage mealName={meal?.meal_name}/>
+              <MealImage mealName={meal.meal_name}/>
               <p> Calories: {`${meal.calories}`}</p>
               <p> Protein: {`${meal.protein} grams`}</p>
               <div className="card-actions justify-end">
