@@ -65,22 +65,38 @@ const formattedDate = (storedDate) => {
         storedMeals.map((meal) => (
           <div
             key={meal && meal.meal_name}
-            className="card card-border bg-primary text-white"
+            className="card card-border bg-primary text-white shadow-blue-2002xl"
           >
             <div className="card-body">
+              <div className="card-actions justify-end">
+                <button
+                  className="btn btn-square btn-sm"
+                  onClick={() => handleDelete(meal.meal_name)}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              </div>
               <h2 className="card-title">{meal.meal_name} </h2>
               <MealImage mealName={meal.meal_name} />
               <p> Calories: {`${meal.calories}`}</p>
               <p> Protein: {`${meal.protein} grams`}</p>
-              <div className="card-actions justify-end">
-                <button
-                  className="btn btn-error"
-                  onClick={() => handleDelete(meal.meal_name)}
-                >
-                  Delete
-                </button>
+              <div className="card-actions justify-end"></div>
+              <div className="font-thin">
+                {meal && formattedDate(meal?.date)}
               </div>
-              <div className="font-thin">{meal && formattedDate(meal?.date)}</div>
             </div>
           </div>
         ))}

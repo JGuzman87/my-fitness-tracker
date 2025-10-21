@@ -2,11 +2,12 @@
 
 import { useState }from "react";
 import { useRouter } from "next/navigation";
-
+import useLocalStorage from "../hooks/useLocalStorage";
 
 const MealsForm = () => {
 
   const router = useRouter();
+  const [meals, setMeals] = useLocalStorage('meals', []);
 
   const [mealData, setMealData] = useState({
     date: "",
@@ -23,12 +24,14 @@ const MealsForm = () => {
   }
 const handleSubmit =  (e) => {
   e.preventDefault();
-  //retreive stored meal, or append an array (aka add an empty array(box) in local storage)
-  const storedMeals = JSON.parse(localStorage.getItem('meals')) || [];
-const updatedMeals = [...storedMeals, mealData];
-  localStorage.setItem('meals', JSON.stringify(updatedMeals));
-  console.log(mealData);
-  //api fetch call for image
+
+  const nextMeals = [...meals, mealData];
+  setMeals(nextMeals);
+  try {
+    localStorage.setItem('meals', JSON.stringify(nextMeals));
+  } catch (err) {
+    console.error('Error writing meals to localStorage', err);
+  }
 
   setMealData({
     date: "",
@@ -37,10 +40,7 @@ const updatedMeals = [...storedMeals, mealData];
     protein: "",
   });
 
-
-
   router.push('/meals');
-
 }
 
 

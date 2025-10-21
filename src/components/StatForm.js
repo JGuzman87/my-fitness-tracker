@@ -1,9 +1,12 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import useLocalStorage from "@/hooks/useLocalStorage";
 
 const StatForm = () => {
   const router = useRouter();
+
+  const [metric, setMetric] = useLocalStorage('stats', []);
 
   const [stats, setStats] = useState({ weight: "", waist: "" });
 
@@ -15,11 +18,14 @@ const StatForm = () => {
   const handleClick = (e) => {
     e.preventDefault();
 
-    console.log(stats);
-    const storedStats = JSON.parse(localStorage.getItem("stats")) || [];
-    const updatedStats = [...storedStats, stats];
-
-    localStorage.setItem("stats", JSON.stringify(updatedStats));
+    const nextStats = [...metric, stats ];
+    setMetric(nextStats);
+    try {
+      localStorage.setItem('stats', JSON.stringify(nextStats));
+    } catch (err) {
+      console.error("Error writing stats to localStorage", err);
+    }
+  
 
     router.push("/stats");
     setStats({ weight: "", waist: "" });
