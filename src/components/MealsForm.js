@@ -25,10 +25,10 @@ const MealsForm = () => {
 const handleSubmit =  (e) => {
   e.preventDefault();
 
-  const nextMeals = [...meals, mealData];
-  setMeals(nextMeals);
+  const m = [...meals, mealData];
+  setMeals(m);
   try {
-    localStorage.setItem('meals', JSON.stringify(nextMeals));
+    localStorage.setItem('meals', JSON.stringify(m));
   } catch (err) {
     console.error('Error writing meals to localStorage', err);
   }
@@ -46,14 +46,14 @@ const handleSubmit =  (e) => {
 
   return (
     <form
-      className="bg-red-400 flex flex-col gap-2 p-4 col-span-1"
+      className="bg-white flex flex-col gap-2 p-4 col-span-1"
       onSubmit={handleSubmit}
     >
       <h1 className="text-2xl">Meal</h1>
 
       <label htmlFor="date">Date:</label>
       <input
-        className="bg-white max-w-full p-1"
+        className="bg-gray-300 max-w-full p-1"
         type="date"
         name="date"
         value={mealData.date}
@@ -62,7 +62,7 @@ const handleSubmit =  (e) => {
 
       <label htmlFor="meal_name">Meal Name:</label>
       <input
-        className="bg-white max-w-full p-1"
+        className="bg-gray-300 max-w-full p-1"
         type="text"
         name="meal_name"
         value={mealData.meal_name}
@@ -70,7 +70,7 @@ const handleSubmit =  (e) => {
       />
       <label htmlFor="calories">Calories:</label>
       <input
-        className="bg-white max-w-full p-1"
+        className="bg-gray-300 max-w-full p-1"
         type="number"
         name="calories"
         value={mealData.calories}
@@ -78,7 +78,7 @@ const handleSubmit =  (e) => {
       />
       <label htmlFor="protein">Protein:</label>
       <input
-        className="bg-white max-w-full p-1"
+        className="bg-gray-300 max-w-full p-1"
         type="number"
         name="protein"
         value={mealData.protein}
