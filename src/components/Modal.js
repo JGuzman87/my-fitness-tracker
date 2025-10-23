@@ -1,19 +1,19 @@
 "use client"
-import MealsForm from "./MealsForm";
-export default function Modal() {
+
+export default function Modal({btnName, children, modalId }) {
 
 return (
   <>
     {/* Open the modal using document.getElementById('ID').showModal() method */}
     <button
       className="btn"
-      onClick={() => document.getElementById("my_modal_2").showModal()}
+      onClick={() => document.getElementById(modalId).showModal()}
     >
-      add a meal
+      {btnName}  
     </button>
-    <dialog id="my_modal_2" className="modal">
+    <dialog id={modalId} className="modal">
       <div className="modal-box">
-        <MealsForm />
+       {children}
       </div>
       <form method="dialog" className="modal-backdrop ">
         <button>close</button>

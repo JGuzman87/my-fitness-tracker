@@ -33,13 +33,13 @@ const StatForm = () => {
 
   return (
     <form
-      className="bg-blue-400 flex flex-col gap-6 p-2 col-span-1"
+      className="bg-white flex flex-col gap-6 p-2 col-span-1"
       onSubmit={handleClick}
     >
       <h1 className="text-2xl">Stats</h1>
       <label htmlFor="weight">Weight:</label>
       <input
-        className="bg-white max-w-full p-1"
+        className="bg-gray-300  max-w-full p-1"
         type="text"
         name="weight"
         value={stats.weight}
@@ -48,7 +48,7 @@ const StatForm = () => {
       />
       <label htmlFor="waist">Waist:</label>
       <input
-        className="bg-white max-w-full p-1"
+        className="bg-gray-300  max-w-full p-1"
         type="text"
         name="waist"
         value={stats.waist}
